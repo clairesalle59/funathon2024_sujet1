@@ -73,11 +73,12 @@ kableExtra::kbl(stations_data_to_print,
 
 STATION_NAME <- "Lille-Flandres"
 
-coords <- stations_data |>
+coords2 <- stations_data |>
   dplyr::select(lng = x_wgs84, lat = y_wgs84, libelle) |>
   dplyr::filter(libelle == STATION_NAME) |>
   dplyr::summarise(lat = dplyr::first(as.numeric(lat)), lng = dplyr::first(as.numeric(lng))) |>
-  unlist(use.names = FALSE)
+  unlist(use.names = FALSE)   # pour tranformer en vecteur
+
 ```
 
 4. Encapsuler le code précédent dans une fonction renvoyant les coordonnées d'une gare à partir de la chaîne de caractère du nom de la gare. Faire un test en affichant les coordonnées de la gare de Toulouse-Matabiau.
